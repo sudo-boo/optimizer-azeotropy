@@ -166,25 +166,28 @@ def predict_minimum():
     X, Y = np.meshgrid(x_range, y_range)
     points = np.vstack([X.ravel(), Y.ravel()]).T
 
-    # Predict the mean values for the grid points
-    mean, _ = gp.predict(points, return_std=True)
+    # Predict the mean and standard deviation values for the grid points
+    mean, std = gp.predict(points, return_std=True)
     min_index = np.argmin(mean)
 
     # Get the corresponding variables
     min_x, min_y = points[min_index]
 
-    # Calculate the minimum value
+    # Calculate the minimum value and its variance
     min_value = mean[min_index]
+    min_variance = std[min_index] ** 2  # Variance is the square of standard deviation
 
-    return min_x, min_y, min_value
+    return min_x, min_y, min_value, min_variance
 
-# Find the minimum value and corresponding variables
-min_x, min_y, min_value = predict_minimum()
+# Find the minimum value, corresponding variables, and variance
+min_x, min_y, min_value, min_variance = predict_minimum()
 
 # --------------------------------------------------------------------------------------------
 
+
 # Print the result
 print("Minimum Value:", min_value)
+print("Variance at Minimum Point:", min_variance)
 print("Corresponding Variables (X, Y):", min_x, min_y)
 
 # --------------------------------------------------------------------------------------------

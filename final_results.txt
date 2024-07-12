@@ -1,0 +1,15 @@
+## Results
+
+The values for which I got minimum were:
+    
+    C = 253.76884422110552
+    R = 46.35678391959799
+
+And the minimum cost found was:
+    
+    T = 32.433675076245216
+
+These values can also be seen when you run the final-solutions.py.
+
+It is highly suggested to run the code as it is more intuitive that just the
+description of confidence intervals and the prediction of the data points.
